@@ -2,6 +2,7 @@
 #define APP_CREATOR_SHADER_APP_STATE_H
 
 #include "core/ShaderConstructorConfig.h"
+#include "effects/param_descriptor.h"
 
 #include <string>
 
@@ -12,6 +13,13 @@ enum class ShaderPlatformChoice
 {
     DesktopGlsl330,
     MobileGlslEs300
+};
+
+enum class EffectCategoryFilter : int
+{
+    All = 0,
+    Production = 1,
+    Experimental = 2
 };
 
 struct AppState
@@ -39,6 +47,12 @@ struct AppState
     std::string m_exportHeaderPath{"export_shader.hpp"};
     std::string m_converterOutput;
     std::string m_lastCppExport;
+
+    bool m_effectLibraryActive{false};
+    int m_selectedLibraryEffectIndex{0};
+    EffectCategoryFilter m_effectLibraryCategoryFilter{EffectCategoryFilter::All};
+    PerfTier m_perfTier{PerfTier::High};
+    EffectRuntimeParams m_effectRuntimeParams;
 
     void syncSceneDimsFromConstructor();
     void syncConstructorDimsFromScene();

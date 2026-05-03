@@ -5,6 +5,8 @@
 #include "core/PresetLibrary.h"
 #include "core/ShaderDefaults.h"
 #include "core/ShaderExport.h"
+#include "effects/effect_registry.h"
+#include "effects/ieffect.h"
 
 #include "converter/ShaderConverter.h"
 
@@ -97,6 +99,12 @@ bool Application::initSdlAndGl()
     SDL_GL_GetDrawableSize(m_window, &dw, &dh);
     m_renderer.resizeViewport(dw, dh);
 
+    EffectRegistry::instance().registerAll();
+
+#if defined(__ANDROID__)
+    m_state.m_perfTier = PerfTier::Low;
+#endif
+
     loadDefaultShadersForState();
 
     m_ui.init(m_window, m_glContext);
@@ -118,6 +126,30 @@ bool Application::initSdlAndGl()
     m_state.syncSceneDimsFromConstructor();
 
     return true;
+}
+
+void Application::syncEffectLibraryFragmentFromRegistry()
+{
+    if (!m_state.m_effectLibraryActive)
+    {
+        return;
+    }
+    const IEffect* e = EffectRegistry::instance().effectAt(static_cast<std::size_t>(m_state.m_selectedLibraryEffectIndex));
+    if (e == nullptr)
+    {
+        return;
+    }
+#if defined(__ANDROID__)
+    const bool gles = true;
+#else
+    const bool gles = (m_state.m_shaderPlatform == ShaderPlatformChoice::MobileGlslEs300);
+#endif
+    m_state.m_fragmentSource = e->fragmentGlsl(gles, m_state.m_perfTier);
+    const std::string vtx = e->vertexGlsl(gles);
+    if (!vtx.empty())
+    {
+        m_state.m_vertexSource = vtx;
+    }
 }
 
 void Application::shutdown()
@@ -260,10 +292,12 @@ void Application::renderFrame()
     cb.onCopyExport = [this] { copyExportToClipboard(); };
     cb.onSaveHeader = [this] { saveExportHeader(); };
     cb.onPresetChanged = [this] {
+        m_state.m_effectLibraryActive = false;
         PresetLibrary::applyPresetByIndex(m_state, m_state.m_selectedPresetIndex);
         tryCompile();
     };
     cb.onConstructorReset = [this] {
+        m_state.m_effectLibraryActive = false;
         m_state.m_constructor.resetToDefaults();
         m_state.m_selectedPresetIndex = 0;
         PresetLibrary::applyPresetByIndex(m_state, 0);
@@ -281,6 +315,23 @@ void Application::renderFrame()
             tryCompile();
         }
         m_state.m_compileLog += log + "\n";
+    };
+    cb.onEffectLibraryChanged = [this] {
+        EffectRegistry::instance().registerAll();
+        if (m_state.m_effectLibraryActive)
+        {
+            const IEffect* e = EffectRegistry::instance().effectAt(static_cast<std::size_t>(m_state.m_selectedLibraryEffectIndex));
+            if (e != nullptr)
+            {
+                m_state.m_effectRuntimeParams.initDefaults(e->exposedParams());
+            }
+            syncEffectLibraryFragmentFromRegistry();
+        }
+        else
+        {
+            PresetLibrary::applyPresetByIndex(m_state, m_state.m_selectedPresetIndex);
+        }
+        tryCompile();
     };
     m_ui.draw(m_state, cb);
     m_ui.endFrame();

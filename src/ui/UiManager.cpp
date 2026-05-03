@@ -2,6 +2,7 @@
 
 #include "converter/ShaderConverter.h"
 #include "core/PresetLibrary.h"
+#include "ui/ui_constructor.h"
 
 #include <imgui.h>
 #include <imgui_impl_opengl3.h>
@@ -326,6 +327,7 @@ void UiManager::drawShaderConstructorPanel(AppState& state, const UiCallbacks& c
 {
     ImGui::Separator();
     ImGui::TextUnformatted("Конструктор шейдеров");
+    drawEffectLibraryPanel(state, cb);
     ShaderConstructorConfig& g = state.m_constructor;
 
     ImGui::SliderFloat("bgWidth", &g.m_bgWidth, 16.0F, 1024.0F);

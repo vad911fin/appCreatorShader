@@ -42,6 +42,7 @@ private:
     void renderFrame();
 
     void tryCompile();
+    void syncEffectLibraryFragmentFromRegistry();
     void exportCppSnippet();
     void copyExportToClipboard();
     void saveExportHeader();

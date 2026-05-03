@@ -5,6 +5,7 @@
 #include "core/GlLoader.h"
 #include "core/ShaderProgram.h"
 #include "core/UniformRegistry.h"
+#include "effects/effect_registry.h"
 
 #include <algorithm>
 #include <cmath>
@@ -162,6 +163,16 @@ void Renderer::render(
     program.bind();
     uniforms.applySystemUniforms(t, vw, vh, vw, vh);
     uniforms.applyConstructorConfig(cfg);
+    uniforms.setInt("u_perfTier", static_cast<int>(state.m_perfTier));
+    if (state.m_effectLibraryActive)
+    {
+        EffectRegistry::instance().registerAll();
+        const IEffect* eff = EffectRegistry::instance().effectAt(static_cast<std::size_t>(state.m_selectedLibraryEffectIndex));
+        if (eff != nullptr)
+        {
+            eff->applyUniforms(uniforms, state.m_effectRuntimeParams);
+        }
+    }
 
     drawObject(program, uniforms, sx, sy, skyW, skyH, 0);
     drawObject(program, uniforms, qx, qy, squareW, squareH, 1);

@@ -81,7 +81,13 @@ set(APP_SOURCES
   src/core/ShaderProgram.cpp
   src/core/Renderer.cpp
   src/core/UniformRegistry.cpp
+  src/effects/param_descriptor.cpp
+  src/effects/ieffect.cpp
+  src/effects/effect_glsl_common.cpp
+  src/effects/effects_library.cpp
+  src/effects/effect_registry.cpp
   src/ui/UiManager.cpp
+  src/ui/ui_constructor.cpp
   src/converter/ShaderConverter.cpp
   ${IMGUI_SOURCES}
 )

@@ -1,0 +1,30 @@
+Effect library compatibility (appCreatorShader)
+
+GLES 3.0 / WebGL2-class (Android, iOS Metal via GLES subset)
+  All registered effects in effects_library.cpp + effect_glsl_common use GLSL ES 3.00
+  fragment features: loops, in/out, no texture samplers required.
+  Stable: Raymarch (stepCount clamped by u_perfTier), SDF 2D, Fluid/Wave toy, Quantum
+    interference toy, Gravitational lensing toy, Bloom/Chroma stub, Domain warp stub,
+    Neural stub, Entropy stub, Plasma stub.
+
+Desktop OpenGL 3.3 core
+  Same shaders with 330 preamble; no GL 4.3-only features in the library today.
+
+Desktop GL 4.3+ only (reserved)
+  IEffect::needsDesktopGl43() is false for all current effects. Future compute-shader
+  or SSBO-based effects should set needsDesktopGl43() true and be excluded from mobile
+  builds or gated in UI.
+
+Graceful degradation (PerfTier + mobile default)
+  Android: Application sets PerfTier::Low at startup.
+  u_perfTier uniform: Low=0, Medium=1, High=2. Raymarch clamps loop iterations on GPU.
+  Heavy post (full multi-pass bloom) is not implemented; stub uses single-pass math only.
+
+Math simplifications (real-time vs physics)
+  Raymarch: volume rendering integral replaced by finite Riemann sum over fixed dt;
+    exponential transmittance per step (product of exp terms).
+  Fluid: FFT / Navier–Stokes not used; multi-sine + finite-difference curl-ish scalar.
+  Quantum: path integral replaced by two sinusoidal phase fields and |psi|^2 envelope.
+  Gravitational lens: Schwarzschild geodesics replaced by radial deflection ~ mass/r^2
+    on background UV; softening epsilon avoids singularity at origin.
+  Entropy stub: temporal feedback loop replaced by static iterated affine map sum.

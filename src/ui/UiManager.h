@@ -21,6 +21,7 @@ struct UiCallbacks
     std::function<void()> onConstructorReset;
     std::function<void()> onSaveUserPresetJson;
     std::function<void()> onLoadUserPresetJson;
+    std::function<void()> onEffectLibraryChanged;
 };
 
 class UiManager
