@@ -71,11 +71,16 @@ set(IMGUI_SOURCES
 
 set(APP_SOURCES
   main.cpp
+  src/core/AppState.cpp
   src/core/Application.cpp
   src/core/GlLoader.cpp
+  src/core/PresetLibrary.cpp
+  src/core/ShaderConstructorConfig.cpp
   src/core/ShaderDefaults.cpp
+  src/core/ShaderExport.cpp
   src/core/ShaderProgram.cpp
   src/core/Renderer.cpp
+  src/core/UniformRegistry.cpp
   src/ui/UiManager.cpp
   src/converter/ShaderConverter.cpp
   ${IMGUI_SOURCES}

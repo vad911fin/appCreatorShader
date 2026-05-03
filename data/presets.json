@@ -1,0 +1,10 @@
+{
+  "name": "example",
+  "effectPreset": 1,
+  "blendMode": 0,
+  "noiseType": 0,
+  "u_bgWidth": 400,
+  "u_bgHeight": 400,
+  "u_objWidth": 64,
+  "u_objHeight": 64
+}

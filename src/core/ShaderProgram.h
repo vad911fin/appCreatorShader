@@ -31,6 +31,7 @@ public:
     void setObjectId(int objectId) const;
 
     [[nodiscard]] bool valid() const { return m_program != 0U; }
+    [[nodiscard]] GLuint glProgram() const { return m_program; }
 
 private:
     GLuint m_program{0};

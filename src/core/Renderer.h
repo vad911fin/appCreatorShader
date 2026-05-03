@@ -8,7 +8,9 @@
 namespace acs
 {
 
+struct AppState;
 class ShaderProgram;
+class UniformRegistry;
 
 class Renderer
 {
@@ -24,8 +26,8 @@ public:
 
     void resizeViewport(int drawableW, int drawableH);
 
-    void render(const ShaderProgram& program, float skyW, float skyH, float squareW, float squareH,
-        float moveSpeed, std::uint32_t ticksMs);
+    void render(
+        const ShaderProgram& program, UniformRegistry& uniforms, AppState& state, std::uint32_t ticksMs);
 
 private:
     void ensureGpuResources();
@@ -36,7 +38,8 @@ private:
     int m_viewportH{1};
 
     void destroyGpu();
-    void drawObject(const ShaderProgram& program, float x, float y, float w, float h, int objectId);
+    void drawObject(const ShaderProgram& program, UniformRegistry& uniforms, float x, float y, float w, float h,
+        int objectId);
 };
 
 } // namespace acs

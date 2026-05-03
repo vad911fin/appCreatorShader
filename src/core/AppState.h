@@ -1,6 +1,8 @@
 #ifndef APP_CREATOR_SHADER_APP_STATE_H
 #define APP_CREATOR_SHADER_APP_STATE_H
 
+#include "core/ShaderConstructorConfig.h"
+
 #include <string>
 
 namespace acs
@@ -25,6 +27,10 @@ struct AppState
     float m_squareHeightPx{64.0F};
     float m_moveSpeed{1.0F};
 
+    ShaderConstructorConfig m_constructor;
+    int m_selectedPresetIndex{0};
+    std::string m_presetFilePath{"presets_user.json"};
+
     ShaderPlatformChoice m_shaderPlatform{ShaderPlatformChoice::DesktopGlsl330};
     bool m_showSettings{false};
     bool m_showShaderEditor{true};
@@ -33,6 +39,9 @@ struct AppState
     std::string m_exportHeaderPath{"export_shader.hpp"};
     std::string m_converterOutput;
     std::string m_lastCppExport;
+
+    void syncSceneDimsFromConstructor();
+    void syncConstructorDimsFromScene();
 };
 
 } // namespace acs

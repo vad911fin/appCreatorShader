@@ -1,6 +1,7 @@
 #include "ui/UiManager.h"
 
 #include "converter/ShaderConverter.h"
+#include "core/PresetLibrary.h"
 
 #include <imgui.h>
 #include <imgui_impl_opengl3.h>
@@ -147,8 +148,7 @@ void UiManager::endFrame()
     ImGui::Render();
 }
 
-void UiManager::draw(AppState& state, const std::function<void()>& onCompile, const std::function<void()>& onExportCpp,
-    const std::function<void()>& onCopyExport, const std::function<void()>& onSaveHeader)
+void UiManager::draw(AppState& state, const UiCallbacks& cb)
 {
     syncStringToBuffer(state.m_vertexSource, m_vertexScratch);
     syncStringToBuffer(state.m_fragmentSource, m_fragmentScratch);
@@ -192,24 +192,24 @@ void UiManager::draw(AppState& state, const std::function<void()>& onCompile, co
             {
                 syncBufferToString(m_vertexScratch, state.m_vertexSource);
                 syncBufferToString(m_fragmentScratch, state.m_fragmentSource);
-                onCompile();
+                cb.onCompile();
             }
             ImGui::SameLine();
             if (ImGui::Button("Экспорт в C++"))
             {
                 syncBufferToString(m_vertexScratch, state.m_vertexSource);
                 syncBufferToString(m_fragmentScratch, state.m_fragmentSource);
-                onExportCpp();
+                cb.onExportCpp();
             }
             ImGui::SameLine();
             if (ImGui::Button("Копировать экспорт"))
             {
-                onCopyExport();
+                cb.onCopyExport();
             }
             ImGui::SameLine();
             if (ImGui::Button("Сохранить .h"))
             {
-                onSaveHeader();
+                cb.onSaveHeader();
             }
 
             ImGui::Separator();
@@ -230,12 +230,6 @@ void UiManager::draw(AppState& state, const std::function<void()>& onCompile, co
     {
         if (ImGui::Begin("Настройки сцены", &state.m_showSettings))
         {
-            ImGui::SliderFloat("Ширина неба (px)", &state.m_skyWidthPx, 32.0F, 2048.0F);
-            ImGui::SliderFloat("Высота неба (px)", &state.m_skyHeightPx, 32.0F, 2048.0F);
-            ImGui::SliderFloat("Ширина квадрата (px)", &state.m_squareWidthPx, 4.0F, 512.0F);
-            ImGui::SliderFloat("Высота квадрата (px)", &state.m_squareHeightPx, 4.0F, 512.0F);
-            ImGui::SliderFloat("Скорость движения", &state.m_moveSpeed, 0.0F, 4.0F);
-
             int plat = (state.m_shaderPlatform == ShaderPlatformChoice::DesktopGlsl330) ? 0 : 1;
             if (ImGui::Combo("Платформа шейдера (редактор)", &plat, "Desktop GLSL 330 core\0Mobile GLSL ES 300\0"))
             {
@@ -252,6 +246,16 @@ void UiManager::draw(AppState& state, const std::function<void()>& onCompile, co
             {
                 state.m_exportHeaderPath.assign(pathBuf);
             }
+
+            char presetPath[512];
+            std::memset(presetPath, 0, sizeof(presetPath));
+            std::strncpy(presetPath, state.m_presetFilePath.c_str(), sizeof(presetPath) - 1U);
+            if (ImGui::InputText("Путь JSON пресета", presetPath, sizeof(presetPath)))
+            {
+                state.m_presetFilePath.assign(presetPath);
+            }
+
+            drawShaderConstructorPanel(state, cb);
         }
         ImGui::End();
     }
@@ -316,6 +320,116 @@ void UiManager::draw(AppState& state, const std::function<void()>& onCompile, co
     syncBufferToString(m_vertexScratch, state.m_vertexSource);
     syncBufferToString(m_fragmentScratch, state.m_fragmentSource);
     syncBufferToString(m_converterOutScratch, state.m_converterOutput);
+}
+
+void UiManager::drawShaderConstructorPanel(AppState& state, const UiCallbacks& cb)
+{
+    ImGui::Separator();
+    ImGui::TextUnformatted("Конструктор шейдеров");
+    ShaderConstructorConfig& g = state.m_constructor;
+
+    ImGui::SliderFloat("bgWidth", &g.m_bgWidth, 16.0F, 1024.0F);
+    ImGui::SliderFloat("bgHeight", &g.m_bgHeight, 16.0F, 1024.0F);
+    ImGui::SliderFloat("objWidth", &g.m_objWidth, 16.0F, 1024.0F);
+    ImGui::SliderFloat("objHeight", &g.m_objHeight, 16.0F, 1024.0F);
+
+    ImGui::SliderFloat("objPosX", &g.m_objPosX, -1.0F, 1.0F);
+    ImGui::SliderFloat("objPosY", &g.m_objPosY, -1.0F, 1.0F);
+    ImGui::Checkbox("Позиция в пикселях (иначе доля от размера неба)", &g.m_objPosPixelMode);
+
+    ImGui::SliderFloat("animSpeed", &g.m_animSpeed, 0.0F, 5.0F);
+    ImGui::SliderFloat("u_timeScale", &g.m_timeScale, 0.0F, 5.0F);
+
+    ImGui::ColorEdit4("bgColor", g.m_bgColor.data());
+    ImGui::ColorEdit4("objColor", g.m_objColor.data());
+    ImGui::ColorEdit4("glowColor", g.m_glowColor.data());
+
+    ImGui::SliderFloat("intensity", &g.m_intensity, 0.0F, 5.0F);
+    ImGui::SliderFloat("density", &g.m_density, 0.0F, 5.0F);
+    ImGui::SliderFloat("noiseScale", &g.m_noiseScale, 0.1F, 32.0F);
+    ImGui::SliderFloat("edgeSoftness", &g.m_edgeSoftness, 0.001F, 0.5F);
+
+    ImGui::Checkbox("enableFog", &g.m_enableFog);
+    ImGui::Checkbox("enableTrail", &g.m_enableTrail);
+    ImGui::Checkbox("enableGlow", &g.m_enableGlow);
+    ImGui::Checkbox("enableDistortion", &g.m_enableDistortion);
+    ImGui::Checkbox("animate", &g.m_animate);
+
+    std::string presetLabels;
+    for (const PresetDefinition& p : PresetLibrary::presets())
+    {
+        presetLabels += p.m_title;
+        presetLabels.push_back('\0');
+    }
+    presetLabels.push_back('\0');
+    if (ImGui::Combo("Пресет эффекта", &state.m_selectedPresetIndex, presetLabels.c_str()))
+    {
+        if (cb.onPresetChanged)
+        {
+            cb.onPresetChanged();
+        }
+    }
+
+    const char* blendItems = "Replace\0Additive\0Alpha Blend\0Screen\0";
+    ImGui::Combo("Режим наложения", &g.m_blendMode, blendItems);
+
+    const char* noiseItems = "Simplex 2D\0Voronoi\0Perlin\0Gradient\0";
+    ImGui::Combo("Тип шума", &g.m_noiseType, noiseItems);
+
+    ImGui::Separator();
+    ImGui::TextUnformatted("Доп. параметры пресета");
+    for (const ExposedParamDef& def : g.m_activeExposedDefs)
+    {
+        if (def.m_type == ExposedParamType::Float)
+        {
+            std::array<float, 4>& slot = g.m_exposedValues[def.m_uniformName];
+            ImGui::SliderFloat(def.m_label.c_str(), &slot[0], def.m_min[0], def.m_max[0]);
+            if (def.m_uniformName == "u_extraWarp")
+            {
+                g.m_extraWarp = slot[0];
+            }
+        }
+        else if (def.m_type == ExposedParamType::Bool)
+        {
+            int v = g.m_exposedInts[def.m_uniformName];
+            bool b = v != 0;
+            if (ImGui::Checkbox(def.m_label.c_str(), &b))
+            {
+                g.m_exposedInts[def.m_uniformName] = b ? 1 : 0;
+            }
+        }
+        else if (def.m_type == ExposedParamType::Int)
+        {
+            ImGui::SliderInt(def.m_label.c_str(), &g.m_exposedInts[def.m_uniformName], static_cast<int>(def.m_min[0]),
+                static_cast<int>(def.m_max[0]));
+        }
+    }
+
+    if (ImGui::Button("Сбросить к дефолту"))
+    {
+        if (cb.onConstructorReset)
+        {
+            cb.onConstructorReset();
+        }
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Сохранить пресет"))
+    {
+        if (cb.onSaveUserPresetJson)
+        {
+            cb.onSaveUserPresetJson();
+        }
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("Загрузить из файла"))
+    {
+        if (cb.onLoadUserPresetJson)
+        {
+            cb.onLoadUserPresetJson();
+        }
+    }
+
+    state.syncSceneDimsFromConstructor();
 }
 
 } // namespace acs

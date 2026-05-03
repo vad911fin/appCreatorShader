@@ -2,7 +2,9 @@
 
 #include "core/GlDebug.h"
 #include "core/GlLoader.h"
+#include "core/PresetLibrary.h"
 #include "core/ShaderDefaults.h"
+#include "core/ShaderExport.h"
 
 #include "converter/ShaderConverter.h"
 
@@ -104,12 +106,16 @@ bool Application::initSdlAndGl()
     {
         m_state.m_compileLog = std::move(log);
         m_state.m_shaderOk = false;
+        m_uniformRegistry.clear();
     }
     else
     {
         m_state.m_compileLog = "Стартовая сборка шейдера: OK\n";
         m_state.m_shaderOk = true;
+        m_uniformRegistry.setProgram(m_program.glProgram());
     }
+
+    m_state.syncSceneDimsFromConstructor();
 
     return true;
 }
@@ -123,6 +129,7 @@ void Application::shutdown()
     m_shutdownDone = true;
 
     m_ui.shutdown();
+    m_uniformRegistry.clear();
     m_program.release();
     m_renderer = Renderer{};
 
@@ -157,6 +164,7 @@ void Application::loadDefaultShadersForState()
         m_state.m_fragmentSource = defaultDesktopFragmentSource();
     }
 #endif
+    PresetLibrary::applyPresetByIndex(m_state, 0);
 }
 
 void Application::tryCompile()
@@ -175,18 +183,20 @@ void Application::tryCompile()
     {
         m_state.m_compileLog = adaptNote + "Компиляция и линковка: OK\n";
         m_state.m_shaderOk = true;
+        m_uniformRegistry.setProgram(m_program.glProgram());
     }
     else
     {
         m_state.m_compileLog = adaptNote + log;
         m_state.m_shaderOk = false;
+        m_uniformRegistry.clear();
     }
 }
 
 void Application::exportCppSnippet()
 {
-    m_state.m_lastCppExport = ShaderConverter::wrapAsCppRawStringLiterals(m_state.m_vertexSource, m_state.m_fragmentSource);
-    m_state.m_compileLog += "Сгенерирован фрагмент C++ (см. также буфер обмена по кнопке).\n";
+    m_state.m_lastCppExport = generateExtendedCppExport(m_state);
+    m_state.m_compileLog += "Сгенерирован расширенный C++ (ShaderConfig + ShaderController + шейдеры).\n";
 }
 
 void Application::copyExportToClipboard()
@@ -244,8 +254,35 @@ void Application::renderFrame()
     m_renderer.resizeViewport(dw, dh);
 
     m_ui.beginFrame();
-    m_ui.draw(m_state, [this] { tryCompile(); }, [this] { exportCppSnippet(); }, [this] { copyExportToClipboard(); },
-        [this] { saveExportHeader(); });
+    UiCallbacks cb;
+    cb.onCompile = [this] { tryCompile(); };
+    cb.onExportCpp = [this] { exportCppSnippet(); };
+    cb.onCopyExport = [this] { copyExportToClipboard(); };
+    cb.onSaveHeader = [this] { saveExportHeader(); };
+    cb.onPresetChanged = [this] {
+        PresetLibrary::applyPresetByIndex(m_state, m_state.m_selectedPresetIndex);
+        tryCompile();
+    };
+    cb.onConstructorReset = [this] {
+        m_state.m_constructor.resetToDefaults();
+        m_state.m_selectedPresetIndex = 0;
+        PresetLibrary::applyPresetByIndex(m_state, 0);
+        tryCompile();
+    };
+    cb.onSaveUserPresetJson = [this] {
+        std::string log;
+        PresetLibrary::saveCurrentPresetToJsonFile(m_state, m_state.m_presetFilePath, log);
+        m_state.m_compileLog += log + "\n";
+    };
+    cb.onLoadUserPresetJson = [this] {
+        std::string log;
+        if (PresetLibrary::tryLoadUserPresetJson(m_state, m_state.m_presetFilePath, log))
+        {
+            tryCompile();
+        }
+        m_state.m_compileLog += log + "\n";
+    };
+    m_ui.draw(m_state, cb);
     m_ui.endFrame();
 
     glViewport(0, 0, dw, dh);
@@ -255,8 +292,9 @@ void Application::renderFrame()
     if (m_state.m_shaderOk)
     {
         const std::uint32_t ticks = static_cast<std::uint32_t>(SDL_GetTicks());
-        m_renderer.render(m_program, m_state.m_skyWidthPx, m_state.m_skyHeightPx, m_state.m_squareWidthPx,
-            m_state.m_squareHeightPx, m_state.m_moveSpeed, ticks);
+        m_uniformRegistry.setProgram(m_program.glProgram());
+        m_renderer.render(m_program, m_uniformRegistry, m_state, ticks);
+        m_state.syncSceneDimsFromConstructor();
     }
 
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

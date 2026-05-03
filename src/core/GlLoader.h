@@ -42,6 +42,8 @@ void glGetProgramivProc(GLuint program, GLenum pname, GLint* params);
 void glGetProgramInfoLogProc(GLuint program, GLsizei bufSize, GLsizei* length, GLchar* infoLog);
 void glDeleteProgramProc(GLuint program);
 GLint glGetUniformLocationProc(GLuint program, const GLchar* name);
+void glUniform1fProc(GLint location, GLfloat v0);
+void glUniform3fProc(GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
 void glUniform4fProc(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
 void glUniform2fProc(GLint location, GLfloat v0, GLfloat v1);
 void glUniform1iProc(GLint location, GLint v0);
@@ -76,6 +78,8 @@ void glUniformMatrix4fvProc(GLint location, GLsizei count, GLboolean transpose, 
 #define glGetProgramInfoLog glGetProgramInfoLogProc
 #define glDeleteProgram glDeleteProgramProc
 #define glGetUniformLocation glGetUniformLocationProc
+#define glUniform1f glUniform1fProc
+#define glUniform3f glUniform3fProc
 #define glUniform4f glUniform4fProc
 #define glUniform2f glUniform2fProc
 #define glUniform1i glUniform1iProc

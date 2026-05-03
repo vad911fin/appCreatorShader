@@ -11,6 +11,9 @@ std::string defaultDesktopFragmentSource();
 std::string defaultMobileVertexSource();
 std::string defaultMobileFragmentSource();
 
+std::string defaultDesktopConstructorFragment();
+std::string defaultMobileConstructorFragment();
+
 } // namespace acs
 
 #endif

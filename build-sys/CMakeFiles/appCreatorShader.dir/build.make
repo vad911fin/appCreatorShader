@@ -83,10 +83,24 @@ CMakeFiles/appCreatorShader.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/appCreatorShader.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadim/Projects/appCreatorShader/main.cpp -o CMakeFiles/appCreatorShader.dir/main.cpp.s
 
+CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
+CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.o: /home/vadim/Projects/appCreatorShader/src/core/AppState.cpp
+CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.o -c /home/vadim/Projects/appCreatorShader/src/core/AppState.cpp
+
+CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vadim/Projects/appCreatorShader/src/core/AppState.cpp > CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.i
+
+CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadim/Projects/appCreatorShader/src/core/AppState.cpp -o CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.s
+
 CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
 CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.o: /home/vadim/Projects/appCreatorShader/src/core/Application.cpp
 CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.o -c /home/vadim/Projects/appCreatorShader/src/core/Application.cpp
 
 CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.s: cmake_force
 CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
 CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.o: /home/vadim/Projects/appCreatorShader/src/core/GlLoader.cpp
 CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.o -c /home/vadim/Projects/appCreatorShader/src/core/GlLoader.cpp
 
 CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.i: cmake_force
@@ -111,10 +125,38 @@ CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadim/Projects/appCreatorShader/src/core/GlLoader.cpp -o CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.s
 
+CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
+CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.o: /home/vadim/Projects/appCreatorShader/src/core/PresetLibrary.cpp
+CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.o -c /home/vadim/Projects/appCreatorShader/src/core/PresetLibrary.cpp
+
+CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vadim/Projects/appCreatorShader/src/core/PresetLibrary.cpp > CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.i
+
+CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadim/Projects/appCreatorShader/src/core/PresetLibrary.cpp -o CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.s
+
+CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
+CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.o: /home/vadim/Projects/appCreatorShader/src/core/ShaderConstructorConfig.cpp
+CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.o -c /home/vadim/Projects/appCreatorShader/src/core/ShaderConstructorConfig.cpp
+
+CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vadim/Projects/appCreatorShader/src/core/ShaderConstructorConfig.cpp > CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.i
+
+CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadim/Projects/appCreatorShader/src/core/ShaderConstructorConfig.cpp -o CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.s
+
 CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
 CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.o: /home/vadim/Projects/appCreatorShader/src/core/ShaderDefaults.cpp
 CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.o -c /home/vadim/Projects/appCreatorShader/src/core/ShaderDefaults.cpp
 
 CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.i: cmake_force
@@ -125,10 +167,24 @@ CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadim/Projects/appCreatorShader/src/core/ShaderDefaults.cpp -o CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.s
 
+CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
+CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.o: /home/vadim/Projects/appCreatorShader/src/core/ShaderExport.cpp
+CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.o -c /home/vadim/Projects/appCreatorShader/src/core/ShaderExport.cpp
+
+CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vadim/Projects/appCreatorShader/src/core/ShaderExport.cpp > CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.i
+
+CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadim/Projects/appCreatorShader/src/core/ShaderExport.cpp -o CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.s
+
 CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
 CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.o: /home/vadim/Projects/appCreatorShader/src/core/ShaderProgram.cpp
 CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.o -c /home/vadim/Projects/appCreatorShader/src/core/ShaderProgram.cpp
 
 CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.i: cmake_force
@@ -142,7 +198,7 @@ CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.s: cmake_force
 CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
 CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.o: /home/vadim/Projects/appCreatorShader/src/core/Renderer.cpp
 CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.o -c /home/vadim/Projects/appCreatorShader/src/core/Renderer.cpp
 
 CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.i: cmake_force
@@ -153,10 +209,24 @@ CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadim/Projects/appCreatorShader/src/core/Renderer.cpp -o CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.s
 
+CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
+CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.o: /home/vadim/Projects/appCreatorShader/src/core/UniformRegistry.cpp
+CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.o -c /home/vadim/Projects/appCreatorShader/src/core/UniformRegistry.cpp
+
+CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vadim/Projects/appCreatorShader/src/core/UniformRegistry.cpp > CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.i
+
+CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vadim/Projects/appCreatorShader/src/core/UniformRegistry.cpp -o CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.s
+
 CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
 CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.o: /home/vadim/Projects/appCreatorShader/src/ui/UiManager.cpp
 CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.o -c /home/vadim/Projects/appCreatorShader/src/ui/UiManager.cpp
 
 CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.i: cmake_force
@@ -170,7 +240,7 @@ CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.s: cmake_force
 CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
 CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.o: /home/vadim/Projects/appCreatorShader/src/converter/ShaderConverter.cpp
 CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.o -c /home/vadim/Projects/appCreatorShader/src/converter/ShaderConverter.cpp
 
 CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.i: cmake_force
@@ -184,7 +254,7 @@ CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.s: cmake_force
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.o: /home/vadim/Projects/appCreatorShader/src/libs/imgui/imgui.cpp
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.o -c /home/vadim/Projects/appCreatorShader/src/libs/imgui/imgui.cpp
 
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.i: cmake_force
@@ -198,7 +268,7 @@ CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.s: cmake_force
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_draw.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_draw.cpp.o: /home/vadim/Projects/appCreatorShader/src/libs/imgui/imgui_draw.cpp
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_draw.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_draw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_draw.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_draw.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_draw.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_draw.cpp.o -c /home/vadim/Projects/appCreatorShader/src/libs/imgui/imgui_draw.cpp
 
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_draw.cpp.i: cmake_force
@@ -212,7 +282,7 @@ CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_draw.cpp.s: cmake_force
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_tables.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_tables.cpp.o: /home/vadim/Projects/appCreatorShader/src/libs/imgui/imgui_tables.cpp
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_tables.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_tables.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_tables.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_tables.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_tables.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_tables.cpp.o -c /home/vadim/Projects/appCreatorShader/src/libs/imgui/imgui_tables.cpp
 
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_tables.cpp.i: cmake_force
@@ -226,7 +296,7 @@ CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_tables.cpp.s: cmake_force
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_widgets.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_widgets.cpp.o: /home/vadim/Projects/appCreatorShader/src/libs/imgui/imgui_widgets.cpp
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_widgets.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_widgets.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_widgets.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_widgets.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_widgets.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_widgets.cpp.o -c /home/vadim/Projects/appCreatorShader/src/libs/imgui/imgui_widgets.cpp
 
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_widgets.cpp.i: cmake_force
@@ -240,7 +310,7 @@ CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_widgets.cpp.s: cmake_force
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_sdl2.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_sdl2.cpp.o: /home/vadim/Projects/appCreatorShader/src/libs/imgui/backends/imgui_impl_sdl2.cpp
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_sdl2.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_sdl2.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_sdl2.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_sdl2.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_sdl2.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_sdl2.cpp.o -c /home/vadim/Projects/appCreatorShader/src/libs/imgui/backends/imgui_impl_sdl2.cpp
 
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_sdl2.cpp.i: cmake_force
@@ -254,7 +324,7 @@ CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_sdl2.cpp.s: c
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_opengl3.cpp.o: CMakeFiles/appCreatorShader.dir/flags.make
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_opengl3.cpp.o: /home/vadim/Projects/appCreatorShader/src/libs/imgui/backends/imgui_impl_opengl3.cpp
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_opengl3.cpp.o: CMakeFiles/appCreatorShader.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_opengl3.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_opengl3.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_opengl3.cpp.o -MF CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_opengl3.cpp.o.d -o CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_opengl3.cpp.o -c /home/vadim/Projects/appCreatorShader/src/libs/imgui/backends/imgui_impl_opengl3.cpp
 
 CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_opengl3.cpp.i: cmake_force
@@ -268,11 +338,16 @@ CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_opengl3.cpp.s
 # Object files for target appCreatorShader
 appCreatorShader_OBJECTS = \
 "CMakeFiles/appCreatorShader.dir/main.cpp.o" \
+"CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.o" \
 "CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.o" \
 "CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.o" \
+"CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.o" \
+"CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.o" \
 "CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.o" \
+"CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.o" \
 "CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.o" \
 "CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.o" \
+"CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.o" \
 "CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.o" \
 "CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.o" \
 "CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.o" \
@@ -286,11 +361,16 @@ appCreatorShader_OBJECTS = \
 appCreatorShader_EXTERNAL_OBJECTS =
 
 appCreatorShader: CMakeFiles/appCreatorShader.dir/main.cpp.o
+appCreatorShader: CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.o
 appCreatorShader: CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.o
 appCreatorShader: CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.o
+appCreatorShader: CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.o
+appCreatorShader: CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.o
 appCreatorShader: CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.o
+appCreatorShader: CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.o
 appCreatorShader: CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.o
 appCreatorShader: CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.o
+appCreatorShader: CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.o
 appCreatorShader: CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.o
 appCreatorShader: CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.o
 appCreatorShader: CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.o
@@ -305,7 +385,7 @@ appCreatorShader: _build/SDL2/libSDL2main.a
 appCreatorShader: /usr/lib/x86_64-linux-gnu/libGLX.so
 appCreatorShader: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 appCreatorShader: CMakeFiles/appCreatorShader.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable appCreatorShader"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable appCreatorShader"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/appCreatorShader.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -48,6 +48,8 @@ using PFNGLGETPROGRAMIVPROC = void(APIENTRY*)(GLuint, GLenum, GLint*);
 using PFNGLGETPROGRAMINFOLOGPROC = void(APIENTRY*)(GLuint, GLsizei, GLsizei*, GLchar*);
 using PFNGLDELETEPROGRAMPROC = void(APIENTRY*)(GLuint);
 using PFNGLGETUNIFORMLOCATIONPROC = GLint(APIENTRY*)(GLuint, const GLchar*);
+using PFNGLUNIFORM1FPROC = void(APIENTRY*)(GLint, GLfloat);
+using PFNGLUNIFORM3FPROC = void(APIENTRY*)(GLint, GLfloat, GLfloat, GLfloat);
 using PFNGLUNIFORM4FPROC = void(APIENTRY*)(GLint, GLfloat, GLfloat, GLfloat, GLfloat);
 using PFNGLUNIFORM2FPROC = void(APIENTRY*)(GLint, GLfloat, GLfloat);
 using PFNGLUNIFORM1IPROC = void(APIENTRY*)(GLint, GLint);
@@ -82,6 +84,8 @@ PFNGLGETPROGRAMIVPROC s_glGetProgramiv = nullptr;
 PFNGLGETPROGRAMINFOLOGPROC s_glGetProgramInfoLog = nullptr;
 PFNGLDELETEPROGRAMPROC s_glDeleteProgram = nullptr;
 PFNGLGETUNIFORMLOCATIONPROC s_glGetUniformLocation = nullptr;
+PFNGLUNIFORM1FPROC s_glUniform1f = nullptr;
+PFNGLUNIFORM3FPROC s_glUniform3f = nullptr;
 PFNGLUNIFORM4FPROC s_glUniform4f = nullptr;
 PFNGLUNIFORM2FPROC s_glUniform2f = nullptr;
 PFNGLUNIFORM1IPROC s_glUniform1i = nullptr;
@@ -257,6 +261,16 @@ GLint glGetUniformLocationProc(GLuint program, const GLchar* name)
     return s_glGetUniformLocation(program, name);
 }
 
+void glUniform1fProc(GLint location, GLfloat v0)
+{
+    s_glUniform1f(location, v0);
+}
+
+void glUniform3fProc(GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
+{
+    s_glUniform3f(location, v0, v1, v2);
+}
+
 void glUniform4fProc(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
     s_glUniform4f(location, v0, v1, v2, v3);
@@ -309,6 +323,8 @@ bool loadDesktopGlProcs(std::string& outError)
     s_glGetProgramInfoLog = load<PFNGLGETPROGRAMINFOLOGPROC>("glGetProgramInfoLog", outError, true);
     s_glDeleteProgram = load<PFNGLDELETEPROGRAMPROC>("glDeleteProgram", outError, true);
     s_glGetUniformLocation = load<PFNGLGETUNIFORMLOCATIONPROC>("glGetUniformLocation", outError, true);
+    s_glUniform1f = load<PFNGLUNIFORM1FPROC>("glUniform1f", outError, true);
+    s_glUniform3f = load<PFNGLUNIFORM3FPROC>("glUniform3f", outError, true);
     s_glUniform4f = load<PFNGLUNIFORM4FPROC>("glUniform4f", outError, true);
     s_glUniform2f = load<PFNGLUNIFORM2FPROC>("glUniform2f", outError, true);
     s_glUniform1i = load<PFNGLUNIFORM1IPROC>("glUniform1i", outError, true);

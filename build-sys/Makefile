@@ -229,6 +229,30 @@ src/converter/ShaderConverter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.s
 .PHONY : src/converter/ShaderConverter.cpp.s
 
+src/core/AppState.o: src/core/AppState.cpp.o
+.PHONY : src/core/AppState.o
+
+# target to build an object file
+src/core/AppState.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.o
+.PHONY : src/core/AppState.cpp.o
+
+src/core/AppState.i: src/core/AppState.cpp.i
+.PHONY : src/core/AppState.i
+
+# target to preprocess a source file
+src/core/AppState.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.i
+.PHONY : src/core/AppState.cpp.i
+
+src/core/AppState.s: src/core/AppState.cpp.s
+.PHONY : src/core/AppState.s
+
+# target to generate assembly for a file
+src/core/AppState.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/AppState.cpp.s
+.PHONY : src/core/AppState.cpp.s
+
 src/core/Application.o: src/core/Application.cpp.o
 .PHONY : src/core/Application.o
 
@@ -277,6 +301,30 @@ src/core/GlLoader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.s
 .PHONY : src/core/GlLoader.cpp.s
 
+src/core/PresetLibrary.o: src/core/PresetLibrary.cpp.o
+.PHONY : src/core/PresetLibrary.o
+
+# target to build an object file
+src/core/PresetLibrary.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.o
+.PHONY : src/core/PresetLibrary.cpp.o
+
+src/core/PresetLibrary.i: src/core/PresetLibrary.cpp.i
+.PHONY : src/core/PresetLibrary.i
+
+# target to preprocess a source file
+src/core/PresetLibrary.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.i
+.PHONY : src/core/PresetLibrary.cpp.i
+
+src/core/PresetLibrary.s: src/core/PresetLibrary.cpp.s
+.PHONY : src/core/PresetLibrary.s
+
+# target to generate assembly for a file
+src/core/PresetLibrary.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/PresetLibrary.cpp.s
+.PHONY : src/core/PresetLibrary.cpp.s
+
 src/core/Renderer.o: src/core/Renderer.cpp.o
 .PHONY : src/core/Renderer.o
 
@@ -300,6 +348,30 @@ src/core/Renderer.s: src/core/Renderer.cpp.s
 src/core/Renderer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.s
 .PHONY : src/core/Renderer.cpp.s
+
+src/core/ShaderConstructorConfig.o: src/core/ShaderConstructorConfig.cpp.o
+.PHONY : src/core/ShaderConstructorConfig.o
+
+# target to build an object file
+src/core/ShaderConstructorConfig.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.o
+.PHONY : src/core/ShaderConstructorConfig.cpp.o
+
+src/core/ShaderConstructorConfig.i: src/core/ShaderConstructorConfig.cpp.i
+.PHONY : src/core/ShaderConstructorConfig.i
+
+# target to preprocess a source file
+src/core/ShaderConstructorConfig.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.i
+.PHONY : src/core/ShaderConstructorConfig.cpp.i
+
+src/core/ShaderConstructorConfig.s: src/core/ShaderConstructorConfig.cpp.s
+.PHONY : src/core/ShaderConstructorConfig.s
+
+# target to generate assembly for a file
+src/core/ShaderConstructorConfig.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/ShaderConstructorConfig.cpp.s
+.PHONY : src/core/ShaderConstructorConfig.cpp.s
 
 src/core/ShaderDefaults.o: src/core/ShaderDefaults.cpp.o
 .PHONY : src/core/ShaderDefaults.o
@@ -325,6 +397,30 @@ src/core/ShaderDefaults.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.s
 .PHONY : src/core/ShaderDefaults.cpp.s
 
+src/core/ShaderExport.o: src/core/ShaderExport.cpp.o
+.PHONY : src/core/ShaderExport.o
+
+# target to build an object file
+src/core/ShaderExport.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.o
+.PHONY : src/core/ShaderExport.cpp.o
+
+src/core/ShaderExport.i: src/core/ShaderExport.cpp.i
+.PHONY : src/core/ShaderExport.i
+
+# target to preprocess a source file
+src/core/ShaderExport.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.i
+.PHONY : src/core/ShaderExport.cpp.i
+
+src/core/ShaderExport.s: src/core/ShaderExport.cpp.s
+.PHONY : src/core/ShaderExport.s
+
+# target to generate assembly for a file
+src/core/ShaderExport.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/ShaderExport.cpp.s
+.PHONY : src/core/ShaderExport.cpp.s
+
 src/core/ShaderProgram.o: src/core/ShaderProgram.cpp.o
 .PHONY : src/core/ShaderProgram.o
 
@@ -348,6 +444,30 @@ src/core/ShaderProgram.s: src/core/ShaderProgram.cpp.s
 src/core/ShaderProgram.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.s
 .PHONY : src/core/ShaderProgram.cpp.s
+
+src/core/UniformRegistry.o: src/core/UniformRegistry.cpp.o
+.PHONY : src/core/UniformRegistry.o
+
+# target to build an object file
+src/core/UniformRegistry.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.o
+.PHONY : src/core/UniformRegistry.cpp.o
+
+src/core/UniformRegistry.i: src/core/UniformRegistry.cpp.i
+.PHONY : src/core/UniformRegistry.i
+
+# target to preprocess a source file
+src/core/UniformRegistry.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.i
+.PHONY : src/core/UniformRegistry.cpp.i
+
+src/core/UniformRegistry.s: src/core/UniformRegistry.cpp.s
+.PHONY : src/core/UniformRegistry.s
+
+# target to generate assembly for a file
+src/core/UniformRegistry.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/appCreatorShader.dir/build.make CMakeFiles/appCreatorShader.dir/src/core/UniformRegistry.cpp.s
+.PHONY : src/core/UniformRegistry.cpp.s
 
 src/libs/imgui/backends/imgui_impl_opengl3.o: src/libs/imgui/backends/imgui_impl_opengl3.cpp.o
 .PHONY : src/libs/imgui/backends/imgui_impl_opengl3.o
@@ -536,21 +656,36 @@ help:
 	@echo "... src/converter/ShaderConverter.o"
 	@echo "... src/converter/ShaderConverter.i"
 	@echo "... src/converter/ShaderConverter.s"
+	@echo "... src/core/AppState.o"
+	@echo "... src/core/AppState.i"
+	@echo "... src/core/AppState.s"
 	@echo "... src/core/Application.o"
 	@echo "... src/core/Application.i"
 	@echo "... src/core/Application.s"
 	@echo "... src/core/GlLoader.o"
 	@echo "... src/core/GlLoader.i"
 	@echo "... src/core/GlLoader.s"
+	@echo "... src/core/PresetLibrary.o"
+	@echo "... src/core/PresetLibrary.i"
+	@echo "... src/core/PresetLibrary.s"
 	@echo "... src/core/Renderer.o"
 	@echo "... src/core/Renderer.i"
 	@echo "... src/core/Renderer.s"
+	@echo "... src/core/ShaderConstructorConfig.o"
+	@echo "... src/core/ShaderConstructorConfig.i"
+	@echo "... src/core/ShaderConstructorConfig.s"
 	@echo "... src/core/ShaderDefaults.o"
 	@echo "... src/core/ShaderDefaults.i"
 	@echo "... src/core/ShaderDefaults.s"
+	@echo "... src/core/ShaderExport.o"
+	@echo "... src/core/ShaderExport.i"
+	@echo "... src/core/ShaderExport.s"
 	@echo "... src/core/ShaderProgram.o"
 	@echo "... src/core/ShaderProgram.i"
 	@echo "... src/core/ShaderProgram.s"
+	@echo "... src/core/UniformRegistry.o"
+	@echo "... src/core/UniformRegistry.i"
+	@echo "... src/core/UniformRegistry.s"
 	@echo "... src/libs/imgui/backends/imgui_impl_opengl3.o"
 	@echo "... src/libs/imgui/backends/imgui_impl_opengl3.i"
 	@echo "... src/libs/imgui/backends/imgui_impl_opengl3.s"

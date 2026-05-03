@@ -4,6 +4,7 @@
 #include "core/AppState.h"
 #include "core/Renderer.h"
 #include "core/ShaderProgram.h"
+#include "core/UniformRegistry.h"
 #include "ui/UiManager.h"
 
 struct SDL_Window;
@@ -30,6 +31,7 @@ private:
 
     AppState m_state;
     ShaderProgram m_program;
+    UniformRegistry m_uniformRegistry;
     Renderer m_renderer;
     UiManager m_ui;
 

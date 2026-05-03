@@ -11,6 +11,18 @@ struct SDL_Window;
 namespace acs
 {
 
+struct UiCallbacks
+{
+    std::function<void()> onCompile;
+    std::function<void()> onExportCpp;
+    std::function<void()> onCopyExport;
+    std::function<void()> onSaveHeader;
+    std::function<void()> onPresetChanged;
+    std::function<void()> onConstructorReset;
+    std::function<void()> onSaveUserPresetJson;
+    std::function<void()> onLoadUserPresetJson;
+};
+
 class UiManager
 {
 public:
@@ -24,8 +36,7 @@ public:
     void shutdown();
 
     void beginFrame();
-    void draw(AppState& state, const std::function<void()>& onCompile, const std::function<void()>& onExportCpp,
-        const std::function<void()>& onCopyExport, const std::function<void()>& onSaveHeader);
+    void draw(AppState& state, const UiCallbacks& cb);
     void endFrame();
 
 private:
@@ -36,6 +47,8 @@ private:
 
     static void syncStringToBuffer(const std::string& s, std::vector<char>& buf);
     static void syncBufferToString(const std::vector<char>& buf, std::string& s);
+
+    void drawShaderConstructorPanel(AppState& state, const UiCallbacks& cb);
 
     bool m_initialized{false};
 };
