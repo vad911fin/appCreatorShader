@@ -1,0 +1,39 @@
+---
+description: "C++ coding standards and best practices"
+globs: ["**/*.cpp", "**/*.h", "**/*.hpp"]
+alwaysApply: false
+---
+
+## Language Standard
+- Современный C++: C++20.
+- Именование:
+  - Классы/структуры: `PascalCase`
+  - Функции/переменные: `camelCase`
+  - Члены класса: `m_camelCase` (префикс `m_`)
+
+## Recommended Features
+
+### ✅ DO use:
+- `std::optional`
+- `std::string_view`
+- `std::span`
+- `enum class`
+- `constexpr`
+- `concepts` (где уместно)
+- `[[nodiscard]]`
+- Умные указатели: `std::unique_ptr`, `std::shared_ptr`
+
+### ❌ DON'T use:
+- Сырые указатели (где можно заменить на умные или ссылки)
+- `new` / `delete`
+- C-стиль приведения типов: `(int)x`
+- `using namespace std;` в заголовочных файлах
+
+## Header Guards
+- ❌ Никогда не используй `#pragma once`.
+- ✅ Всегда используй include guards в формате:
+  ```cpp
+  #ifndef MODULE_NAME_CLASSNAME_H
+  #define MODULE_NAME_CLASSNAME_H
+  // ... код ...
+  #endif

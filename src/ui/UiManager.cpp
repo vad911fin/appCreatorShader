@@ -1,0 +1,275 @@
+#include "ui/UiManager.h"
+
+#include "converter/ShaderConverter.h"
+
+#include <imgui.h>
+#include <imgui_impl_opengl3.h>
+#include <imgui_impl_sdl2.h>
+
+#include <SDL.h>
+
+#include <algorithm>
+#include <cstring>
+
+namespace acs
+{
+
+namespace
+{
+
+constexpr std::size_t kShaderScratch = 256U * 1024U;
+constexpr std::size_t kConverterScratch = 512U * 1024U;
+
+} // namespace
+
+UiManager::UiManager()
+{
+    m_vertexScratch.resize(kShaderScratch, '\0');
+    m_fragmentScratch.resize(kShaderScratch, '\0');
+    m_converterOutScratch.resize(kConverterScratch, '\0');
+}
+
+UiManager::~UiManager()
+{
+    shutdown();
+}
+
+void UiManager::syncStringToBuffer(const std::string& s, std::vector<char>& buf)
+{
+    if (buf.empty())
+    {
+        buf.resize(std::max<std::size_t>(kShaderScratch, s.size() + 1U), '\0');
+    }
+    const std::size_t n = std::min(s.size(), buf.size() - 1U);
+    std::memcpy(buf.data(), s.data(), n);
+    buf[n] = '\0';
+}
+
+void UiManager::syncBufferToString(const std::vector<char>& buf, std::string& s)
+{
+    const std::size_t len = strnlen(buf.data(), buf.size());
+    s.assign(buf.data(), len);
+}
+
+void UiManager::init(SDL_Window* window, void* glContext)
+{
+    if (m_initialized)
+    {
+        return;
+    }
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO();
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+    io.IniFilename = nullptr;
+
+    ImGui::StyleColorsDark();
+
+    ImGui_ImplSDL2_InitForOpenGL(window, glContext);
+#if defined(__ANDROID__)
+    ImGui_ImplOpenGL3_Init("#version 300 es");
+#else
+    ImGui_ImplOpenGL3_Init("#version 330 core");
+#endif
+    m_initialized = true;
+}
+
+void UiManager::shutdown()
+{
+    if (!m_initialized)
+    {
+        return;
+    }
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplSDL2_Shutdown();
+    if (ImGui::GetCurrentContext() != nullptr)
+    {
+        ImGui::DestroyContext();
+    }
+    m_initialized = false;
+}
+
+void UiManager::beginFrame()
+{
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplSDL2_NewFrame();
+    ImGui::NewFrame();
+}
+
+void UiManager::endFrame()
+{
+    ImGui::Render();
+}
+
+void UiManager::draw(AppState& state, const std::function<void()>& onCompile, const std::function<void()>& onExportCpp,
+    const std::function<void()>& onCopyExport, const std::function<void()>& onSaveHeader)
+{
+    syncStringToBuffer(state.m_vertexSource, m_vertexScratch);
+    syncStringToBuffer(state.m_fragmentSource, m_fragmentScratch);
+    syncStringToBuffer(state.m_converterOutput, m_converterOutScratch);
+
+    if (ImGui::BeginMainMenuBar())
+    {
+        if (ImGui::BeginMenu("Файл"))
+        {
+            if (ImGui::MenuItem("Выход", "Alt+F4"))
+            {
+                SDL_Event ev;
+                ev.type = SDL_QUIT;
+                SDL_PushEvent(&ev);
+            }
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Вид"))
+        {
+            ImGui::MenuItem("Панель визуализации", nullptr, &state.m_showVisualizationPanel);
+            ImGui::MenuItem("Редактор шейдеров", nullptr, &state.m_showShaderEditor);
+            ImGui::EndMenu();
+        }
+        if (ImGui::BeginMenu("Настройки"))
+        {
+            if (ImGui::MenuItem("Параметры сцены…"))
+            {
+                state.m_showSettings = true;
+            }
+            ImGui::EndMenu();
+        }
+        ImGui::EndMainMenuBar();
+    }
+
+    if (state.m_showShaderEditor)
+    {
+        ImGui::SetNextWindowSize(ImVec2(720.0F, 520.0F), ImGuiCond_FirstUseEver);
+        if (ImGui::Begin("Редактор шейдеров", &state.m_showShaderEditor))
+        {
+            if (ImGui::Button("Компилировать"))
+            {
+                syncBufferToString(m_vertexScratch, state.m_vertexSource);
+                syncBufferToString(m_fragmentScratch, state.m_fragmentSource);
+                onCompile();
+            }
+            ImGui::SameLine();
+            if (ImGui::Button("Экспорт в C++"))
+            {
+                syncBufferToString(m_vertexScratch, state.m_vertexSource);
+                syncBufferToString(m_fragmentScratch, state.m_fragmentSource);
+                onExportCpp();
+            }
+            ImGui::SameLine();
+            if (ImGui::Button("Копировать экспорт"))
+            {
+                onCopyExport();
+            }
+            ImGui::SameLine();
+            if (ImGui::Button("Сохранить .h"))
+            {
+                onSaveHeader();
+            }
+
+            ImGui::Separator();
+            ImGui::TextUnformatted(state.m_shaderOk ? "Статус: OK" : "Статус: ошибка / не компилировали");
+            ImGui::BeginChild("compileLog", ImVec2(0.0F, 120.0F), true);
+            ImGui::TextUnformatted(state.m_compileLog.c_str());
+            ImGui::EndChild();
+
+            ImGui::TextUnformatted("Вершинный шейдер");
+            ImGui::InputTextMultiline("##vs", m_vertexScratch.data(), m_vertexScratch.size(), ImVec2(-1.0F, 220.0F));
+            ImGui::TextUnformatted("Фрагментный шейдер");
+            ImGui::InputTextMultiline("##fs", m_fragmentScratch.data(), m_fragmentScratch.size(), ImVec2(-1.0F, 220.0F));
+        }
+        ImGui::End();
+    }
+
+    if (state.m_showSettings)
+    {
+        if (ImGui::Begin("Настройки сцены", &state.m_showSettings))
+        {
+            ImGui::SliderFloat("Ширина неба (px)", &state.m_skyWidthPx, 32.0F, 2048.0F);
+            ImGui::SliderFloat("Высота неба (px)", &state.m_skyHeightPx, 32.0F, 2048.0F);
+            ImGui::SliderFloat("Ширина квадрата (px)", &state.m_squareWidthPx, 4.0F, 512.0F);
+            ImGui::SliderFloat("Высота квадрата (px)", &state.m_squareHeightPx, 4.0F, 512.0F);
+            ImGui::SliderFloat("Скорость движения", &state.m_moveSpeed, 0.0F, 4.0F);
+
+            int plat = (state.m_shaderPlatform == ShaderPlatformChoice::DesktopGlsl330) ? 0 : 1;
+            if (ImGui::Combo("Платформа шейдера (редактор)", &plat, "Desktop GLSL 330 core\0Mobile GLSL ES 300\0"))
+            {
+                state.m_shaderPlatform = plat == 0 ? ShaderPlatformChoice::DesktopGlsl330 : ShaderPlatformChoice::MobileGlslEs300;
+            }
+            ImGui::TextUnformatted("На ПК предпросмотр всегда через OpenGL 3.3; режим «Mobile» конвертирует в 330 для компиляции.");
+
+            ImGui::Separator();
+            ImGui::TextUnformatted("Путь для «Сохранить .h»");
+            char pathBuf[512];
+            std::memset(pathBuf, 0, sizeof(pathBuf));
+            std::strncpy(pathBuf, state.m_exportHeaderPath.c_str(), sizeof(pathBuf) - 1U);
+            if (ImGui::InputText("##exportpath", pathBuf, sizeof(pathBuf)))
+            {
+                state.m_exportHeaderPath.assign(pathBuf);
+            }
+        }
+        ImGui::End();
+    }
+
+    if (state.m_showVisualizationPanel)
+    {
+        if (ImGui::Begin("Визуализация", &state.m_showVisualizationPanel))
+        {
+            ImGui::BulletText("Чёрное «небо» — прямоугольник по центру окна.");
+            ImGui::BulletText("Квадрат движется по эллиптической траектории внутри неба.");
+            ImGui::BulletText("Размеры и скорость задаются в «Настройки сцены…».");
+        }
+        ImGui::End();
+    }
+
+    if (ImGui::Begin("Конвертер шейдеров"))
+    {
+        const char* items = "Desktop 330 → GLES 300\0GLES 300 → Desktop 330\0В фрагмент MSL (черновик)\0В вершинный MSL (черновик)\0";
+        ImGui::Combo("Направление", &m_convertTarget, items);
+
+        if (ImGui::Button("Конвертировать текущие исходники"))
+        {
+            syncBufferToString(m_vertexScratch, state.m_vertexSource);
+            syncBufferToString(m_fragmentScratch, state.m_fragmentSource);
+            std::string vs = state.m_vertexSource;
+            std::string fs = state.m_fragmentSource;
+            switch (m_convertTarget)
+            {
+            case 0:
+                state.m_converterOutput = ShaderConverter::desktopGlsl330ToGlslEs300(vs);
+                state.m_converterOutput += "\n// ---- fragment ----\n";
+                state.m_converterOutput += ShaderConverter::desktopGlsl330ToGlslEs300(fs);
+                break;
+            case 1:
+                state.m_converterOutput = ShaderConverter::glslEs300ToDesktopGlsl330(vs);
+                state.m_converterOutput += "\n// ---- fragment ----\n";
+                state.m_converterOutput += ShaderConverter::glslEs300ToDesktopGlsl330(fs);
+                break;
+            case 2:
+                state.m_converterOutput = ShaderConverter::glslToMslApprox(fs, true);
+                break;
+            default:
+                state.m_converterOutput = ShaderConverter::glslToMslApprox(vs, false);
+                break;
+            }
+            syncStringToBuffer(state.m_converterOutput, m_converterOutScratch);
+        }
+        ImGui::SameLine();
+        if (ImGui::Button("В C++ raw strings"))
+        {
+            syncBufferToString(m_vertexScratch, state.m_vertexSource);
+            syncBufferToString(m_fragmentScratch, state.m_fragmentSource);
+            state.m_converterOutput = ShaderConverter::wrapAsCppRawStringLiterals(state.m_vertexSource, state.m_fragmentSource);
+            syncStringToBuffer(state.m_converterOutput, m_converterOutScratch);
+        }
+
+        ImGui::InputTextMultiline("##convOut", m_converterOutScratch.data(), m_converterOutScratch.size(), ImVec2(-1.0F, 260.0F),
+            ImGuiInputTextFlags_ReadOnly);
+    }
+    ImGui::End();
+
+    syncBufferToString(m_vertexScratch, state.m_vertexSource);
+    syncBufferToString(m_fragmentScratch, state.m_fragmentSource);
+    syncBufferToString(m_converterOutScratch, state.m_converterOutput);
+}
+
+} // namespace acs

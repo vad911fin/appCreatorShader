@@ -1,0 +1,37 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/appCreatorShader.dir/main.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/main.cpp.o.d"
+  "CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/src/converter/ShaderConverter.cpp.o.d"
+  "CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/src/core/Application.cpp.o.d"
+  "CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/src/core/GlLoader.cpp.o.d"
+  "CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/src/core/Renderer.cpp.o.d"
+  "CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/src/core/ShaderDefaults.cpp.o.d"
+  "CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/src/core/ShaderProgram.cpp.o.d"
+  "CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_opengl3.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_opengl3.cpp.o.d"
+  "CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_sdl2.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/src/libs/imgui/backends/imgui_impl_sdl2.cpp.o.d"
+  "CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui.cpp.o.d"
+  "CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_draw.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_draw.cpp.o.d"
+  "CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_tables.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_tables.cpp.o.d"
+  "CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_widgets.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/src/libs/imgui/imgui_widgets.cpp.o.d"
+  "CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.o"
+  "CMakeFiles/appCreatorShader.dir/src/ui/UiManager.cpp.o.d"
+  "appCreatorShader"
+  "appCreatorShader.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/appCreatorShader.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

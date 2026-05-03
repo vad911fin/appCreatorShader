@@ -1,0 +1,20 @@
+---
+description: "Core behavior and project structure"
+globs: ["**/*.cpp", "**/*.h", "**/CMakeLists.txt"]
+alwaysApply: false
+---
+
+## Project Structure
+- Application root: `src/appStressMaster/`
+- Main CMake file: `src/CMakeLists.txt`
+- Entry point: `src/appStressMaster/main.cpp`
+- Headers: `src/appStressMaster/include/`
+- Sources: `src/appStressMaster/`
+
+## Response Rules
+- Отвечай кратко и по делу, сразу переходи к сути.
+- При изменении кода: выводи ТОЛЬКО изменённые блоки (минимальный diff).
+- Не добавляй вступления: «Конечно!», «Вот как это сделать», «Надеюсь, это поможет».
+- Если правка минимальна (1–3 строки) — покажи их с контекстом ~3 строки выше/ниже.
+- Всегда указывай путь к файлу в начале ответа: `📄 путь/к/файлу`.
+- Язык ответов: русский. Думай на русском, если не запрошено иное.

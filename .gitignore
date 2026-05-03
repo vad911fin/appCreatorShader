@@ -1,0 +1,9 @@
+build/
+build-desktop/
+build-android/
+cmake-build-*/
+src/libs/SDL2/
+src/libs/imgui/
+*.user
+.DS_Store
+export_shader.hpp

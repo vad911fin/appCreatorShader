@@ -1,0 +1,15 @@
+---
+description: "CMake build system rules for myApp"
+globs: ["**/CMakeLists.txt", "**/*.cmake"]
+alwaysApply: false
+---
+
+## Версия и Стандарт
+- Минимальная версия: `cmake_minimum_required(VERSION 3.28)`
+- Стандарт C++ задавай строго на уровне таргета:
+  ```cmake
+  set_target_properties(${TARGET_NAME} PROPERTIES
+      CXX_STANDARD 20
+      CXX_STANDARD_REQUIRED ON
+      CXX_EXTENSIONS OFF
+  )

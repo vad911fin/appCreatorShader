@@ -1,0 +1,9 @@
+/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles/appCreatorShader.dir
+/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles/edit_cache.dir
+/home/vadim/Projects/appCreatorShader/build-sys/CMakeFiles/rebuild_cache.dir
+/home/vadim/Projects/appCreatorShader/build-sys/_build/SDL2/CMakeFiles/sdl_headers_copy.dir
+/home/vadim/Projects/appCreatorShader/build-sys/_build/SDL2/CMakeFiles/SDL2main.dir
+/home/vadim/Projects/appCreatorShader/build-sys/_build/SDL2/CMakeFiles/SDL2.dir
+/home/vadim/Projects/appCreatorShader/build-sys/_build/SDL2/CMakeFiles/uninstall.dir
+/home/vadim/Projects/appCreatorShader/build-sys/_build/SDL2/CMakeFiles/edit_cache.dir
+/home/vadim/Projects/appCreatorShader/build-sys/_build/SDL2/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/vadim/Projects/appCreatorShader/build-sys/_deps/imgui-subbuild/CMakeFiles/imgui_fc-populate"
+		},
+		{
+			"file" : "/home/vadim/Projects/appCreatorShader/build-sys/_deps/imgui-subbuild/CMakeFiles/imgui_fc-populate.rule"
+		},
+		{
+			"file" : "/home/vadim/Projects/appCreatorShader/build-sys/_deps/imgui-subbuild/CMakeFiles/imgui_fc-populate-complete.rule"
+		},
+		{
+			"file" : "/home/vadim/Projects/appCreatorShader/build-sys/_deps/imgui-subbuild/imgui_fc-populate-prefix/src/imgui_fc-populate-stamp/imgui_fc-populate-build.rule"
+		},
+		{
+			"file" : "/home/vadim/Projects/appCreatorShader/build-sys/_deps/imgui-subbuild/imgui_fc-populate-prefix/src/imgui_fc-populate-stamp/imgui_fc-populate-configure.rule"
+		},
+		{
+			"file" : "/home/vadim/Projects/appCreatorShader/build-sys/_deps/imgui-subbuild/imgui_fc-populate-prefix/src/imgui_fc-populate-stamp/imgui_fc-populate-download.rule"
+		},
+		{
+			"file" : "/home/vadim/Projects/appCreatorShader/build-sys/_deps/imgui-subbuild/imgui_fc-populate-prefix/src/imgui_fc-populate-stamp/imgui_fc-populate-install.rule"
+		},
+		{
+			"file" : "/home/vadim/Projects/appCreatorShader/build-sys/_deps/imgui-subbuild/imgui_fc-populate-prefix/src/imgui_fc-populate-stamp/imgui_fc-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/vadim/Projects/appCreatorShader/build-sys/_deps/imgui-subbuild/imgui_fc-populate-prefix/src/imgui_fc-populate-stamp/imgui_fc-populate-patch.rule"
+		},
+		{
+			"file" : "/home/vadim/Projects/appCreatorShader/build-sys/_deps/imgui-subbuild/imgui_fc-populate-prefix/src/imgui_fc-populate-stamp/imgui_fc-populate-test.rule"
+		},
+		{
+			"file" : "/home/vadim/Projects/appCreatorShader/build-sys/_deps/imgui-subbuild/imgui_fc-populate-prefix/src/imgui_fc-populate-stamp/imgui_fc-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"imgui_fc-populate"
+		],
+		"name" : "imgui_fc-populate"
+	}
+}
