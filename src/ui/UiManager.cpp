@@ -10,6 +10,7 @@
 
 #include <algorithm>
 #include <cstring>
+#include <filesystem>
 
 namespace acs
 {
@@ -19,6 +20,50 @@ namespace
 
 constexpr std::size_t kShaderScratch = 256U * 1024U;
 constexpr std::size_t kConverterScratch = 512U * 1024U;
+
+void loadFontWithCyrillic(ImGuiIO& io)
+{
+    ImFontConfig cfg;
+    cfg.OversampleH = 2;
+    cfg.OversampleV = 1;
+    const ImWchar* ranges = io.Fonts->GetGlyphRangesCyrillic();
+
+    const char* const paths[] = {
+#if defined(_WIN32)
+        "C:/Windows/Fonts/segoeui.ttf",
+        "C:/Windows/Fonts/arial.ttf",
+#elif defined(__APPLE__)
+        "/System/Library/Fonts/Supplemental/Arial.ttf",
+        "/Library/Fonts/Arial Unicode.ttf",
+#elif defined(__ANDROID__)
+        "/system/fonts/Roboto-Regular.ttf",
+        "/system/fonts/NotoSans-Regular.ttf",
+        "/system/fonts/DroidSans.ttf",
+#else
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        "/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+#endif
+    };
+
+    for (const char* const path : paths)
+    {
+        std::error_code ec;
+        if (!std::filesystem::exists(std::filesystem::path(path), ec))
+        {
+            continue;
+        }
+        if (io.Fonts->AddFontFromFileTTF(path, 18.0F, &cfg, ranges) != nullptr)
+        {
+            return;
+        }
+    }
+
+    io.Fonts->AddFontDefault();
+    SDL_Log(
+        "ImGui: не найден системный TTF с кириллицей — меню может отображаться как \"?\". Установите шрифт "
+        "(например fonts-dejavu-core) или положите .ttf рядом с приложением.");
+}
 
 } // namespace
 
@@ -64,6 +109,7 @@ void UiManager::init(SDL_Window* window, void* glContext)
     io.IniFilename = nullptr;
 
     ImGui::StyleColorsDark();
+    loadFontWithCyrillic(io);
 
     ImGui_ImplSDL2_InitForOpenGL(window, glContext);
 #if defined(__ANDROID__)

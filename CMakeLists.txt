@@ -108,6 +108,7 @@ else()
     "${IMGUI_DIR}/backends"
   )
   if(WIN32)
+    target_compile_options(appCreatorShader PRIVATE /utf-8)
     target_link_libraries(appCreatorShader PRIVATE SDL2::SDL2 opengl32)
     acs_link_sdl2_main(appCreatorShader)
   elseif(APPLE)
